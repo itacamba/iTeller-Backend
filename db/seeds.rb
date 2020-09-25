@@ -11,9 +11,9 @@ Transaction.destroy_all
 
 #User
 
-u1 = User.create(name: 'Sandra Levy', email: "sl@demo.com", password: "demo")
-u2 = User.create(name: "Bob Larson", email: "bob.lars@demo.com", password: "demo")
-u3 = User.create(name: "Veronica Ramos", email: "v.ramos@demo.com", password: "demo")
+u1 = User.create(name: 'Sandra Levy', email: "sl@demo.com", password: "demo", password_confirmation: "demo")
+u2 = User.create(name: "Bob Larson", email: "bob.lars@demo.com", password: "demo", password_confirmation: "demo")
+u3 = User.create(name: "Veronica Ramos", email: "v.ramos@demo.com", password: "demo", password_confirmation: "demo")
 
 
 

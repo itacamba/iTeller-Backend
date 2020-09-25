@@ -5,18 +5,22 @@ class UsersController < ApplicationController
         render json: users
     end
 
+    def show
+        user = User.find(params[:id])
+        render json: user, include: [:accounts]
+    end
+
     def decode_user
         token = request.headers["Authenticate"]
-        # byebug
         user = User.find(decode(token)["user"]["user_id"])
         render json: user, include: [:accounts]
     end
 
     def create 
-        user = User.new(name: params['name'], email: params['email'], password: params['password'])
+        user = User.new(name: params['name'], email: params['email'], password: params['password'], password_confirmation: params[:password_confirmation])
         if user.valid?
             user.save
-            payload = {name: params['name'], email: params['email'], password: params['password']}
+            payload = {name: params['name'], email: params['email']}
                 token = encode(payload)
                 new_hash={}
                 new_hash['user_data'] = payload
