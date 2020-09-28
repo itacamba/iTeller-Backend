@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
-    def login
-        
+    
+    def login 
         user = User.find_by(email: params[:email])
         if(user && user.authenticate(params[:password]))
         payload = {user: {id: user.id, user_id: user.id, email: params[:email], name: user.name, accounts: user.accounts}}
