@@ -6,11 +6,12 @@ class TransactionsController < ApplicationController
 
 
     def  create
-       transaction = Transaction.new(account_id: params[:account_id], name: params["name"], amount: params["amount"], category: params["category"], date: DateTime.now(), vendor: params["vendor"], note: params["note"], t_type: params["t_type"])
+       transaction = Transaction.new(account_id: params[:account_id], name: params[:name], amount: params[:amount], category: params[:category], date: DateTime.now(), vendor: params[:vendor], note: params[:note], t_type: params[:t_type])
        if transaction.valid? 
-        Transaction.create(transaction)
+        transaction = Transaction.create(account_id: params[:account_id], name: params[:name], amount: params[:amount], category: params[:category], date: DateTime.now(), vendor: params[:vendor], note: params[:note], t_type: params[:t_type])
+        render json: transaction
        else
-        render json: "Invalid Entry"
+        render json:  { error: "Invalid Entry"}
        end
     end
 

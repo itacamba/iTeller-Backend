@@ -6,5 +6,4 @@ class Transaction < ApplicationRecord
     validates :category, presence: true
     validates :t_type, presence: true
     
-
 end
