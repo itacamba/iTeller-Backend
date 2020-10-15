@@ -20,10 +20,11 @@ class TransactionsController < ApplicationController
         render json: transaction
     end
 
-    def delete 
+    def destroy
+        # byebug
         transaction = Transaction.find(params[:id])
         transaction.destroy 
-        redirect_to action: 'index'
+        # redirect_to action: 'index'
     end
 
 end
